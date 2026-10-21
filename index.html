@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZERO PING | Ingeniería de Software, ERPs y Sistemas a Medida en Chile</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        zp: {
+                            bg: '#030712',
+                            card: '#0B1220',
+                            border: '#1A2138',
+                            blue: '#1D70F7',
+                            cyan: '#00F0FF',
+                            emerald: '#10B981',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-sans antialiased selection:bg-zp-blue selection:text-white bg-tech-grid relative text-slate-100 bg-[#030712]">
+
+    <!-- Ambient Top Glow -->
+    <div class="fixed inset-0 hero-glow pointer-events-none z-0"></div>
+
+    <!-- STICKY NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-zp-blue/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center group focus:outline-none" aria-label="Zero Ping Home">
+                <svg class="h-11 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 560 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 15 24 L 155 24 L 131 54 L 39 54 Z" fill="#FFFFFF"/>
+                    <path d="M 85 69 L 122 69 L 58 146 L 21 146 Z" fill="#FFFFFF"/>
+                    <path d="M 172 27 C 204 33 220 57 220 82 C 220 112 197 123 165 123 L 103 123 L 127 94 L 163 94 C 178 94 187 86 187 74 C 187 62 178 55 163 55 L 148 55 L 172 27 Z" fill="#FFFFFF"/>
+                    <path d="M 78 146 L 124 146 L 104 170 L 58 170 Z" transform="translate(0, -4)" fill="#1D70F7"/>
+                    <text x="252" y="84" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="72" letter-spacing="8">ZERO</text>
+                    <text x="252" y="148" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="68" letter-spacing="12">PING</text>
+                </svg>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#soluciones" class="hover:text-white transition">Soluciones & ERPs</a>
+                <a href="#casos-exito" class="hover:text-white transition flex items-center gap-1.5">
+                    <span>Nuestros Proyectos</span>
+                    <span class="bg-zp-blue/20 text-zp-cyan text-[10px] font-mono px-1.5 py-0.5 rounded border border-zp-blue/30">5</span>
+                </a>
+                <a href="#cotizador" class="hover:text-white transition">Cotizador</a>
+                <a href="#contacto" class="hover:text-white transition">Contacto</a>
+            </nav>
+
+            <div class="hidden sm:flex items-center space-x-3">
+                <a href="#cotizador" class="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition">
+                    Simular Proyecto
+                </a>
+                <a href="#contacto" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-zp-blue hover:bg-blue-600 shadow-lg shadow-zp-blue/30 transition flex items-center gap-2">
+                    <span>Iniciar Proyecto</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-zp-blue/20 bg-[#030712]/95 px-4 pt-4 pb-6 space-y-3">
+            <a href="#soluciones" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5">Soluciones & ERPs</a>
+            <a href="#casos-exito" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5">Nuestros Proyectos</a>
+            <a href="#cotizador" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5">Cotizador de Sistemas</a>
+            <div class="pt-2">
+                <a href="#contacto" onclick="toggleMobileMenu()" class="w-full py-3 rounded-xl font-semibold text-center bg-zp-blue text-white block shadow-lg shadow-zp-blue/30">
+                    Agendar Reunión Técnica
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero-section" class="relative z-10 pt-10 pb-20 lg:pt-16 lg:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+            
+            <div class="lg:col-span-6 space-y-6 relative z-20">
+                <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-zp-blue/10 border border-zp-blue/30 text-zp-cyan text-xs font-mono">
+                    <span class="w-2 h-2 rounded-full bg-zp-blue animate-pulse"></span>
+                    <span>INGENIERÍA DE SOFTWARE • CALAMA, CHILE</span>
+                </div>
+
+                <h1 class="font-display text-4xl sm:text-5xl lg:text-[52px] font-bold tracking-tight text-white leading-[1.08]">
+                    SISTEMAS Y ERPs A MEDIDA <span class="text-transparent bg-clip-text bg-gradient-to-r from-zp-blue via-zp-cyan to-blue-400">SIN LATENCIA.</span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-xl">
+                    Diseñamos y programamos la arquitectura completa de tu empresa: desde la <strong class="text-white font-semibold">base de datos y el núcleo ERP</strong> hasta <strong class="text-white font-semibold">interfaces web y e-commerce</strong> de respuesta instantánea.
+                </p>
+
+                <div class="flex flex-wrap gap-2.5 pt-1">
+                    <div class="px-3.5 py-2 rounded-xl bg-white/[0.03] border border-white/10 flex items-center gap-2 text-xs font-mono text-slate-200">
+                        <i data-lucide="layers" class="w-4 h-4 text-zp-cyan"></i>
+                        <span>Arquitectura Full-Stack</span>
+                    </div>
+                    <div class="px-3.5 py-2 rounded-xl bg-white/[0.03] border border-white/10 flex items-center gap-2 text-xs font-mono text-slate-200">
+                        <i data-lucide="cpu" class="w-4 h-4 text-zp-blue"></i>
+                        <span>100% Código a Medida</span>
+                    </div>
+                    <div class="px-3.5 py-2 rounded-xl bg-white/[0.03] border border-white/10 flex items-center gap-2 text-xs font-mono text-slate-200">
+                        <i data-lucide="zap" class="w-4 h-4 text-emerald-400"></i>
+                        <span>Soporte en Chile</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-3">
+                    <a href="#cotizador" class="px-6 py-4 rounded-xl bg-zp-blue hover:bg-blue-600 text-white font-semibold text-base shadow-xl shadow-zp-blue/25 transition flex items-center justify-center gap-2.5 group">
+                        <span>Cotizar Proyecto</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#casos-exito" class="px-6 py-4 rounded-xl glass-panel hover:bg-white/10 text-slate-200 font-medium text-base border border-white/15 transition flex items-center justify-center gap-2">
+                        <span>Ver Portafolio</span>
+                        <i data-lucide="folder-git-2" class="w-4 h-4 text-zp-cyan"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 relative flex items-center justify-center min-h-[340px] sm:min-h-[440px]">
+                <div id="code-hero-interactive" class="code-symbol-stage relative w-full h-full flex items-center justify-center py-12 cursor-pointer select-none">
+                    <div id="code-cursor-glow" class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-zp-blue/30 via-zp-cyan/20 to-transparent blur-3xl pointer-events-none transition-transform duration-200 ease-out"></div>
+                    <div class="absolute w-52 h-52 rounded-full bg-zp-blue/15 blur-2xl animate-pulse-slow pointer-events-none"></div>
+
+                    <div id="code-symbol-tilt" class="code-symbol-group relative z-10 flex items-center justify-center font-mono font-extrabold text-[110px] sm:text-[155px] lg:text-[180px] leading-none tracking-tight">
+                        <span class="code-glyph code-bracket glyph-left">&lt;</span>
+                        <span class="code-glyph code-slash glyph-slash mx-1 sm:mx-2">/</span>
+                        <span class="code-glyph code-bracket glyph-right">&gt;</span>
+
+                        <span id="code-spark-1" class="absolute -top-6 right-8 w-2.5 h-2.5 rounded-full bg-zp-cyan shadow-[0_0_16px_#00F0FF] pointer-events-none transition-transform duration-300"></span>
+                        <span id="code-spark-2" class="absolute -bottom-4 left-10 w-2 h-2 rounded-full bg-zp-blue shadow-[0_0_14px_#1D70F7] pointer-events-none transition-transform duration-300"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEON SEPARATOR -->
+    <div class="section-divider-neon"></div>
+
+    <!-- BENTO GRID -->
+    <section id="soluciones" class="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+                <div class="text-xs font-mono uppercase tracking-widest text-zp-cyan mb-2">// ARQUITECTURA EMPRESARIAL</div>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">
+                    Sistemas creados exactamente para tu operación
+                </h2>
+            </div>
+            <p class="text-slate-400 max-w-md text-sm sm:text-base">
+                No adaptamos tu empresa a un software enlatado. Desarrollamos la herramienta exacta que tu equipo necesita para escalar y controlar cada peso.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <div class="md:col-span-7 glass-panel glass-panel-hover rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute -right-12 -top-12 w-48 h-48 bg-zp-blue/15 rounded-full blur-3xl group-hover:bg-zp-blue/25 transition"></div>
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-zp-blue/20 border border-zp-blue/40 flex items-center justify-center text-zp-cyan">
+                            <i data-lucide="database" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-zp-blue/15 text-zp-cyan border border-zp-blue/30">CORE EMPRESARIAL</span>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Sistemas ERP & Gestión Integral a Medida</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">Centraliza toda tu operación en una única plataforma web segura. Control de inventario multi-bodega, órdenes de compra, proveedores, clientes, facturación y trazabilidad completa.</p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-4 border-t border-white/10 text-xs font-mono text-slate-300">
+                    <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-zp-blue"></i> Multi-Sucursal</div>
+                    <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-zp-blue"></i> Roles y Permisos</div>
+                    <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-zp-blue"></i> Auditoría Total</div>
+                </div>
+            </div>
+
+            <div class="md:col-span-5 glass-panel glass-panel-hover rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-zp-cyan/15 border border-zp-cyan/30 flex items-center justify-center text-zp-cyan">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-white/5 text-slate-300 border border-white/10">FINANZAS & GESTIÓN</span>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Control Administrativo & Automatización</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">Elimina las planillas de Excel desconectadas. Automatizamos generación de cotizaciones en PDF, control de caja chica, rendiciones de gastos y paneles gerenciales en tiempo real.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300">Reportes PDF / Excel</span>
+                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300">Flujos de Aprobación</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-5 glass-panel glass-panel-hover rounded-2xl p-7 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">ALTA CONVERSIÓN</span>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Sitios Web Corporativos & E-Commerce</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">Plataformas comerciales ultrarrápidas con pasarelas de pago integradas (Webpay Plus, Mercado Pago), carritos inteligentes y gestión de despachos.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
+                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300">Pasarelas de Pago</span>
+                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300">SEO Técnico</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-7 glass-panel glass-panel-hover rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                            <i data-lucide="truck" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-purple-500/15 text-purple-300 border border-purple-500/30">NORTE GRANDE & CHILE</span>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Software para Proveedores Mineros, Logística y Terreno</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">Desde Calama conocemos la exigencia operativa de la región. Desarrollamos sistemas de control de flota, checklists digitales en terreno, control de mantenciones y portales de clientes.</p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-4 border-t border-white/10 text-xs font-mono text-slate-300">
+                    <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Control de Flota</div>
+                    <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Mantenciones</div>
+                    <div class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Modo Móvil / Terreno</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEON SEPARATOR -->
+    <div class="section-divider-neon"></div>
+
+    <!-- PORTAFOLIO -->
+    <section id="casos-exito" class="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+            <div>
+                <div class="text-xs font-mono uppercase tracking-widest text-zp-cyan mb-2">// NUESTROS PROYECTOS</div>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">
+                    Sistemas diseñados y desplegados a medida
+                </h2>
+            </div>
+
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterPortfolio('all')" id="filter-all" class="px-4 py-2 rounded-xl text-xs font-mono bg-zp-blue text-white font-semibold transition">Todos (5)</button>
+                <button onclick="filterPortfolio('ecommerce')" id="filter-ecommerce" class="px-4 py-2 rounded-xl text-xs font-mono bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition">E-Commerce & Web</button>
+                <button onclick="filterPortfolio('erp')" id="filter-erp" class="px-4 py-2 rounded-xl text-xs font-mono bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition">ERP & Logística</button>
+                <button onclick="filterPortfolio('gestion')" id="filter-gestion" class="px-4 py-2 rounded-xl text-xs font-mono bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition">Control Administrativo</button>
+            </div>
+        </div>
+
+        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- NEON SEPARATOR -->
+    <div class="section-divider-neon"></div>
+
+    <!-- COTIZADOR -->
+    <section id="cotizador" class="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="glass-panel rounded-3xl border border-zp-blue/30 p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+            <div class="max-w-3xl mb-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zp-blue/15 border border-zp-blue/30 text-zp-cyan text-xs font-mono mb-3">
+                    <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+                    <span>CONFIGURADOR DE ARQUITECTURA & ALCANCE</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">
+                    Arma la estructura de tu sistema a medida
+                </h2>
+                <p class="text-slate-300 mt-2 text-sm sm:text-base">
+                    Selecciona los módulos que necesitas desarrollar. Nuestro motor calculará la arquitectura recomendada, fases de entrega y te permitirá enviar la solicitud técnica directa a nuestro equipo en Calama.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-7 space-y-6">
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-slate-400 mb-3">1. Selecciona el tipo de solución o módulos requeridos:</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="estimator-modules">
+                            <button type="button" onclick="toggleModule(this, 'Sistema ERP Integral', 4)" class="module-btn selected text-left p-4 rounded-xl border border-zp-blue bg-zp-blue/15 transition flex items-start justify-between gap-3">
+                                <div>
+                                    <div class="font-semibold text-white text-sm">Sistema ERP / Gestión</div>
+                                    <div class="text-xs text-slate-400 mt-1">Operaciones, clientes, proveedores y finanzas</div>
+                                </div>
+                                <i data-lucide="check-square" class="w-5 h-5 text-zp-cyan shrink-0 module-icon"></i>
+                            </button>
+
+                            <button type="button" onclick="toggleModule(this, 'E-Commerce / Web Transaccional', 3)" class="module-btn text-left p-4 rounded-xl border border-white/10 bg-[#070A12] hover:border-white/25 transition flex items-start justify-between gap-3">
+                                <div>
+                                    <div class="font-semibold text-white text-sm">E-Commerce & Pagos</div>
+                                    <div class="text-xs text-slate-400 mt-1">Catálogo dinámico, carrito, Webpay / Mercado Pago</div>
+                                </div>
+                                <i data-lucide="square" class="w-5 h-5 text-slate-500 shrink-0 module-icon"></i>
+                            </button>
+
+                            <button type="button" onclick="toggleModule(this, 'Control de Inventario y Bodega', 3)" class="module-btn text-left p-4 rounded-xl border border-white/10 bg-[#070A12] hover:border-white/25 transition flex items-start justify-between gap-3">
+                                <div>
+                                    <div class="font-semibold text-white text-sm">Inventario & Bodega</div>
+                                    <div class="text-xs text-slate-400 mt-1">Control de stock crítico, lotes, códigos QR/Barra</div>
+                                </div>
+                                <i data-lucide="square" class="w-5 h-5 text-slate-500 shrink-0 module-icon"></i>
+                            </button>
+
+                            <button type="button" onclick="toggleModule(this, 'Control Administrativo y Flujos', 2)" class="module-btn text-left p-4 rounded-xl border border-white/10 bg-[#070A12] hover:border-white/25 transition flex items-start justify-between gap-3">
+                                <div>
+                                    <div class="font-semibold text-white text-sm">Control Administrativo</div>
+                                    <div class="text-xs text-slate-400 mt-1">Cotizaciones PDF, gastos, caja y aprobaciones</div>
+                                </div>
+                                <i data-lucide="square" class="w-5 h-5 text-slate-500 shrink-0 module-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-slate-400 mb-3">2. Cantidad estimada de usuarios internos del sistema:</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button type="button" onclick="setScale('pyme', '1 a 10 usuarios')" id="scale-pyme" class="scale-btn py-3 px-4 rounded-xl border border-zp-blue bg-zp-blue/15 text-white text-xs font-mono font-semibold">1 - 10 (Pyme)</button>
+                            <button type="button" onclick="setScale('mediana', '10 a 50 usuarios')" id="scale-mediana" class="scale-btn py-3 px-4 rounded-xl border border-white/10 bg-[#070A12] text-slate-300 text-xs font-mono">10 - 50</button>
+                            <button type="button" onclick="setScale('corporativo', '+50 usuarios / Multi-sede')" id="scale-corporativo" class="scale-btn py-3 px-4 rounded-xl border border-white/10 bg-[#070A12] text-slate-300 text-xs font-mono">+50 / Corporativo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-[#060811] rounded-2xl border border-white/10 p-6 space-y-5">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                        <div>
+                            <span class="text-[11px] font-mono text-zp-cyan uppercase">BLUEPRINT GENERADO</span>
+                            <h3 class="text-xl font-display font-bold text-white">Resumen de Arquitectura</h3>
+                        </div>
+                        <span class="px-2.5 py-1 rounded bg-zp-blue/20 text-zp-cyan font-mono text-xs border border-zp-blue/30">ZERO PING SPEC</span>
+                    </div>
+
+                    <div>
+                        <div class="text-xs font-mono text-slate-400 mb-2">MÓDULOS INCLUIDOS:</div>
+                        <div id="blueprint-modules-list" class="flex flex-wrap gap-1.5"></div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <div class="bg-white/[0.02] p-3.5 rounded-xl border border-white/5">
+                            <div class="text-[11px] font-mono text-slate-400">TIEMPO ESTIMADO MVP</div>
+                            <div id="blueprint-time" class="text-lg font-bold text-white font-mono mt-1">3 a 5 Semanas</div>
+                        </div>
+                        <div class="bg-white/[0.02] p-3.5 rounded-xl border border-white/5">
+                            <div class="text-[11px] font-mono text-slate-400">ESCALA OPERATIVA</div>
+                            <div id="blueprint-scale" class="text-sm font-bold text-zp-cyan font-mono mt-1.5">1 a 10 usuarios</div>
+                        </div>
+                    </div>
+
+                    <button onclick="transferQuoteToContact()" class="w-full py-4 rounded-xl bg-gradient-to-r from-zp-blue to-blue-600 hover:from-blue-600 hover:to-zp-blue text-white font-semibold text-sm shadow-lg shadow-zp-blue/25 transition flex items-center justify-center gap-2">
+                        <span>Solicitar Cotización de esta Configuración</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEON SEPARATOR -->
+    <div class="section-divider-neon"></div>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div class="lg:col-span-5 space-y-6">
+                <div class="text-xs font-mono uppercase tracking-widest text-zp-cyan">// INICIEMOS TU PROYECTO</div>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Hablemos de ingeniería para tu negocio</h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">Cuéntanos qué proceso quieres automatizar o qué sistema necesitas construir.</p>
+                <div class="glass-panel p-4 rounded-xl flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-zp-blue/20 border border-zp-blue/40 flex items-center justify-center text-zp-cyan shrink-0">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-mono text-slate-400">UBICACIÓN CENTRAL</div>
+                        <div class="text-sm font-semibold text-white">Calama, Región de Antofagasta, Chile</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <form id="contact-form" onsubmit="handleContactSubmit(event)" class="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 space-y-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Nombre / Contacto *</label>
+                            <input type="text" id="form-name" required placeholder="Ej. Rodrigo Morales" class="w-full px-4 py-3 rounded-xl bg-[#060810] border border-white/10 text-white text-sm focus:outline-none focus:border-zp-blue">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Empresa / Rubro *</label>
+                            <input type="text" id="form-company" required placeholder="Ej. Servicios Mineros" class="w-full px-4 py-3 rounded-xl bg-[#060810] border border-white/10 text-white text-sm focus:outline-none focus:border-zp-blue">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Correo Electrónico *</label>
+                            <input type="email" id="form-email" required placeholder="nombre@empresa.cl" class="w-full px-4 py-3 rounded-xl bg-[#060810] border border-white/10 text-white text-sm focus:outline-none focus:border-zp-blue">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Teléfono / WhatsApp *</label>
+                            <input type="tel" id="form-phone" required placeholder="+56 9 XXXX XXXX" class="w-full px-4 py-3 rounded-xl bg-[#060810] border border-white/10 text-white text-sm focus:outline-none focus:border-zp-blue">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase text-slate-300 mb-2">Detalle del Sistema o Proyecto Requerido *</label>
+                        <textarea id="form-message" rows="4" required placeholder="Cuéntanos qué sistema necesitas..." class="w-full px-4 py-3 rounded-xl bg-[#060810] border border-white/10 text-white text-sm focus:outline-none focus:border-zp-blue"></textarea>
+                    </div>
+                    <div id="form-feedback" class="hidden p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-sm"></div>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-zp-blue hover:bg-blue-600 text-white font-semibold text-sm shadow-lg shadow-zp-blue/30 transition flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Enviar Solicitud a Zero Ping</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+   <!-- FOOTER -->
+<footer class="relative z-10 bg-[#030408] border-t border-zp-blue/30 pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+            
+            <!-- Columna 1: Logo y Descripción -->
+            <div class="md:col-span-5 space-y-4">
+                <a href="#" class="inline-block group focus:outline-none" aria-label="Zero Ping Home">
+                    <svg class="h-10 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 560 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 15 24 L 155 24 L 131 54 L 39 54 Z" fill="#FFFFFF"/>
+                        <path d="M 85 69 L 122 69 L 58 146 L 21 146 Z" fill="#FFFFFF"/>
+                        <path d="M 172 27 C 204 33 220 57 220 82 C 220 112 197 123 165 123 L 103 123 L 127 94 L 163 94 C 178 94 187 86 187 74 C 187 62 178 55 163 55 L 148 55 L 172 27 Z" fill="#FFFFFF"/>
+                        <path d="M 78 142 L 124 142 L 104 166 L 58 166 Z" fill="#1D70F7"/>
+                        <text x="252" y="84" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="72" letter-spacing="8">ZERO</text>
+                        <text x="252" y="148" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="68" letter-spacing="12">PING</text>
+                    </svg>
+                </a>
+                <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
+                    Ingeniería de software a medida, ERPs, sistemas de gestión y plataformas web de alta velocidad. Desarrollado desde Calama, Chile.
+                </p>
+                
+                <!-- Redes Sociales (Instagram y WhatsApp) -->
+                <div class="flex items-center space-x-3 pt-2">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/56900000000" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/10 text-slate-300 hover:text-emerald-400 flex items-center justify-center transition" aria-label="WhatsApp">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/zeroping" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:border-pink-500/50 hover:bg-pink-500/10 text-slate-300 hover:text-pink-400 flex items-center justify-center transition" aria-label="Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Columna 2: Soluciones -->
+            <div class="md:col-span-3 space-y-3 text-sm">
+                <div class="font-mono text-xs text-zp-cyan uppercase tracking-wider mb-4">Soluciones</div>
+                <ul class="space-y-2.5 text-slate-400">
+                    <li><a href="#soluciones" class="hover:text-white transition">Sistemas ERP a Medida</a></li>
+                    <li><a href="#soluciones" class="hover:text-white transition">Control Administrativo</a></li>
+                    <li><a href="#soluciones" class="hover:text-white transition">E-Commerce & Pagos</a></li>
+                    <li><a href="#soluciones" class="hover:text-white transition">Software Logístico & Minero</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Legal & Empresa (Sobre nosotros, Términos, Políticas) -->
+            <div class="md:col-span-4 space-y-3 text-sm">
+                <div class="font-mono text-xs text-zp-cyan uppercase tracking-wider mb-4">Empresa & Legal</div>
+                <ul class="space-y-2.5 text-slate-400">
+                    <li><a href="#contacto" class="hover:text-white transition flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-zp-blue"></span> Sobre nosotros</a></li>
+                    <li><a href="#contacto" class="hover:text-white transition flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-zp-blue"></span> Términos y condiciones</a></li>
+                    <li><a href="#contacto" class="hover:text-white transition flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-zp-blue"></span> Políticas de privacidad</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Copyright y Sello -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-mono gap-4">
+            <div>© 2026 ZERO PING SPA — CALAMA, REGIÓN DE ANTOFAGASTA, CHILE.</div>
+            <div class="flex items-center gap-2 text-zp-cyan">
+                <span class="w-1.5 h-1.5 rounded-full bg-zp-cyan animate-pulse"></span>
+                <span>LATENCIA CERO • CÓDIGO 100% A MEDIDA</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Main JavaScript File -->
+    <script src="js/main.js"></script>
+</body>
+</html>
