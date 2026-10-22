@@ -1,5 +1,5 @@
 /* ==========================================================
-   ZERO PING - Estilos Principales
+   ZERO PING - Estilos Principales (MÁXIMO RENDIMIENTO)
    ================================================---------- */
 
 html, body {
@@ -8,7 +8,7 @@ html, body {
     overflow-x: hidden;
 }
 
-/* Fondo de cuadrícula vectorial azul de alta tecnología */
+/* Fondo de cuadrícula vectorial */
 .bg-tech-grid {
     background-color: #030712;
     background-image: 
@@ -18,12 +18,10 @@ html, body {
     background-size: 48px 48px, 48px 48px, 100% 100%;
 }
 
-/* Resplandor radial superior para dar profundidad vectorial */
 .hero-glow {
     background: radial-gradient(circle at 50% 10%, rgba(29, 112, 247, 0.35) 0%, rgba(0, 240, 255, 0.1) 40%, rgba(3, 7, 18, 0) 75%);
 }
 
-/* Efecto Texto Metálico Brillante (Sección 1) */
 .metallic-text {
     background: linear-gradient(
         110deg,
@@ -46,7 +44,6 @@ html, body {
     100% { background-position: -200% center; }
 }
 
-/* Línea separadora con efecto Neón Azul Brillante */
 .section-divider-neon {
     height: 2px;
     width: 100%;
@@ -58,26 +55,23 @@ html, body {
     z-index: 20;
 }
 
-/* Tarjetas Glassmorphism avanzadas */
+/* RENDIMIENTO: Eliminado backdrop-filter. Fondo casi sólido. */
 .glass-panel {
-    background: rgba(11, 18, 32, 0.82);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(11, 18, 32, 0.98); 
     border: 1px solid rgba(29, 112, 247, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .glass-panel-hover {
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-panel-hover:hover {
     border-color: rgba(0, 240, 255, 0.6);
-    box-shadow: 0 0 40px -5px rgba(29, 112, 247, 0.35);
+    box-shadow: 0 0 35px -5px rgba(29, 112, 247, 0.30);
     transform: translateY(-3px);
 }
 
-/* Estilos Símbolo </> Interactivo en el Hero */
 .code-symbol-stage {
     perspective: 1100px;
     transform-style: preserve-3d;
@@ -85,46 +79,29 @@ html, body {
 
 .code-symbol-group {
     transform-style: preserve-3d;
-    transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
 }
 
 .code-glyph {
     display: inline-block;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
-    will-change: transform, filter;
 }
 
+/* RENDIMIENTO: Reemplazado filter: drop-shadow por text-shadow */
 .code-bracket {
     background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 55%, #64748B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 18px 35px rgba(29, 112, 247, 0.28));
+    text-shadow: 0 10px 20px rgba(29, 112, 247, 0.25);
 }
 
 .code-slash {
     background: linear-gradient(135deg, #00F0FF 0%, #1D70F7 65%, #3B82F6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 35px rgba(29, 112, 247, 0.65));
+    text-shadow: 0 0 25px rgba(29, 112, 247, 0.60);
 }
 
-.code-symbol-stage:hover .glyph-left {
-    transform: translate3d(-18px, -4px, 35px) rotateZ(-4deg);
-    filter: drop-shadow(0 0 32px rgba(0, 240, 255, 0.45));
-}
-
-.code-symbol-stage:hover .glyph-slash {
-    transform: translate3d(0px, -10px, 65px) scale(1.08) rotateZ(6deg);
-    filter: drop-shadow(0 0 48px rgba(0, 240, 255, 0.85));
-}
-
-.code-symbol-stage:hover .glyph-right {
-    transform: translate3d(18px, 4px, 35px) rotateZ(4deg);
-    filter: drop-shadow(0 0 32px rgba(0, 240, 255, 0.45));
-}
-
-/* Barra de desplazamiento personalizada */
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;

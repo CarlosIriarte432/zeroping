@@ -1,13 +1,17 @@
-// Initialize Lucide icons
+// ==========================================================================
+// ZERO PING - Script Principal (main.js) OPTIMIZADO PARA RENDIMIENTO
+// ==========================================================================
+
+// Inicializar iconos de Lucide
 lucide.createIcons();
 
-// 1. Mobile Menu Toggle
+// 1. Menú Móvil
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
+    if (menu) menu.classList.toggle('hidden');
 }
 
-// 2. INTERACTIVE FLOATING </> SYMBOL ENGINE (HERO SECTION)
+// 2. Motor Interactivo Símbolo </> (OPTIMIZADO CON requestAnimationFrame)
 function initInteractiveCodeSymbol() {
     const stage = document.getElementById('code-hero-interactive');
     const symbolGroup = document.getElementById('code-symbol-tilt');
@@ -17,63 +21,69 @@ function initInteractiveCodeSymbol() {
 
     if (!stage || !symbolGroup) return;
 
-    stage.addEventListener('mousemove', (e) => {
-        const rect = stage.getBoundingClientRect();
-        const normX = ((e.clientX - rect.left) / rect.width) - 0.5;  // -0.5 to 0.5
-        const normY = ((e.clientY - rect.top) / rect.height) - 0.5; // -0.5 to 0.5
+    let isTicking = false;
 
-        // Smooth 3D magnetic tilt & parallax
-        const rotateY = normX * 36;
-        const rotateX = -normY * 32;
-        const moveX = normX * 24;
-        const moveY = normY * 20;
-
-        symbolGroup.style.transform = `translate3d(${moveX.toFixed(1)}px, ${moveY.toFixed(1)}px, 20px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
-
-        if (glow) {
-            glow.style.transform = `translate3d(${(normX * 70).toFixed(1)}px, ${(normY * 60).toFixed(1)}px, 0)`;
-        }
-        if (spark1) {
-            spark1.style.transform = `translate3d(${(-normX * 45).toFixed(1)}px, ${(-normY * 45).toFixed(1)}px, 40px)`;
-        }
-        if (spark2) {
-            spark2.style.transform = `translate3d(${(normX * 50).toFixed(1)}px, ${(normY * 35).toFixed(1)}px, 30px)`;
-        }
+    // Al entrar, quitamos la transición de CSS para que JS mueva los elementos sin lag
+    stage.addEventListener('mouseenter', () => {
+        symbolGroup.style.transition = 'none';
+        if (glow) glow.style.transition = 'none';
+        if (spark1) spark1.style.transition = 'none';
+        if (spark2) spark2.style.transition = 'none';
     });
 
+    stage.addEventListener('mousemove', (e) => {
+        if (!isTicking) {
+            window.requestAnimationFrame(() => {
+                const rect = stage.getBoundingClientRect();
+                const normX = ((e.clientX - rect.left) / rect.width) - 0.5;
+                const normY = ((e.clientY - rect.top) / rect.height) - 0.5;
+                
+                const rotateY = normX * 36;
+                const rotateX = -normY * 32;
+                const moveX = normX * 24;
+                const moveY = normY * 20;
+
+                symbolGroup.style.transform = `translate3d(${moveX.toFixed(1)}px, ${moveY.toFixed(1)}px, 20px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+                
+                if (glow) glow.style.transform = `translate3d(${(normX * 70).toFixed(1)}px, ${(normY * 60).toFixed(1)}px, 0)`;
+                if (spark1) spark1.style.transform = `translate3d(${(-normX * 45).toFixed(1)}px, ${(-normY * 45).toFixed(1)}px, 40px)`;
+                if (spark2) spark2.style.transform = `translate3d(${(normX * 50).toFixed(1)}px, ${(normY * 35).toFixed(1)}px, 30px)`;
+                
+                isTicking = false;
+            });
+            isTicking = true;
+        }
+    }, { passive: true });
+
+    // Al salir, devolvemos la transición de CSS para que vuelva al centro suavemente
     stage.addEventListener('mouseleave', () => {
+        symbolGroup.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        if (glow) glow.style.transition = 'transform 0.4s ease-out';
+        if (spark1) spark1.style.transition = 'transform 0.4s ease-out';
+        if (spark2) spark2.style.transition = 'transform 0.4s ease-out';
+
         symbolGroup.style.transform = 'translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg)';
         if (glow) glow.style.transform = 'translate3d(0px, 0px, 0px)';
         if (spark1) spark1.style.transform = 'translate3d(0px, 0px, 0px)';
         if (spark2) spark2.style.transform = 'translate3d(0px, 0px, 0px)';
     });
-
-    // Touch support for mobile devices
-    stage.addEventListener('touchmove', (e) => {
-        if (e.touches.length > 0) {
-            const rect = stage.getBoundingClientRect();
-            const normX = ((e.touches[0].clientX - rect.left) / rect.width) - 0.5;
-            const normY = ((e.touches[0].clientY - rect.top) / rect.height) - 0.5;
-            const rotateY = normX * 28;
-            const rotateX = -normY * 24;
-            symbolGroup.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
-        }
-    }, { passive: true });
 }
 
-// 3. Clean & Visual Portfolio Data (Healthy Snacks + 4 Clients)
+// 3. Datos y Lógica del Portafolio
 const portfolioCases = [
     {
         id: 'healthy-snacks',
         client: 'Healthy Snacks',
         featured: true,
         category: 'ecommerce',
-        badge: 'E-COMMERCE & GESTIÓN',
+        badge: 'E-COMMERCE EN VIVO',
         accent: 'from-emerald-500/20 via-zp-blue/15 to-transparent',
         icon: 'shopping-bag',
         title: 'Plataforma E-Commerce & Control de Inventario',
         shortDesc: 'Tienda online de alto rendimiento para venta de snacks saludables con stock sincronizado en tiempo real y pasarela de pago integrada.',
-        tags: ['Catálogo Dinámico', 'Pasarela de Pagos', 'Control de Stock', 'Panel Autoadministrable']
+        tags: ['Catálogo Dinámico', 'Pasarela de Pagos', 'Control de Stock'],
+        previewUrl: 'https://carlosiriarte432.github.io/healthysnacks/', 
+        displayUrl: 'tienda.healthysnacks.cl'
     },
     {
         id: 'loa-logistics',
@@ -128,6 +138,7 @@ const portfolioCases = [
 function renderPortfolio(filter = 'all') {
     const grid = document.getElementById('portfolio-grid');
     if (!grid) return;
+    
     const filtered = filter === 'all' ? portfolioCases : portfolioCases.filter(c => c.category === filter);
 
     grid.innerHTML = filtered.map(item => `
@@ -150,7 +161,6 @@ function renderPortfolio(filter = 'all') {
                         <div class="text-xs font-mono uppercase tracking-wider text-slate-400">CLIENTE</div>
                         <div class="font-display text-xl font-bold text-white flex items-center gap-2">
                             <span>${item.client}</span>
-                            ${item.featured ? '<span class="text-[10px] font-mono bg-zp-blue text-white px-2 py-0.5 rounded">DESTACADO</span>' : ''}
                         </div>
                     </div>
                     <div class="w-11 h-11 rounded-xl bg-[#05060B]/80 border border-white/15 flex items-center justify-center text-zp-cyan">
@@ -169,12 +179,17 @@ function renderPortfolio(filter = 'all') {
                     </p>
                 </div>
 
-                <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
-                    <div class="flex flex-wrap gap-1.5">
-                        ${item.tags.map(tag => `
-                            <span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300">${tag}</span>
-                        `).join('')}
+                <div>
+                    <div class="pt-4 border-t border-white/10 flex flex-wrap gap-1.5 mb-4">
+                        ${item.tags.map(tag => `<span class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300">${tag}</span>`).join('')}
                     </div>
+                    
+                    ${item.previewUrl ? `
+                    <button onclick="openPreviewModal('${item.previewUrl}', '${item.displayUrl}')" class="w-full py-3 rounded-xl bg-zp-blue/20 hover:bg-zp-blue border border-zp-blue/50 hover:border-zp-blue text-zp-cyan hover:text-white text-sm font-semibold transition flex items-center justify-center gap-2 group">
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <span>Abrir Demo en Vivo</span>
+                    </button>
+                    ` : ''}
                 </div>
             </div>
         </div>
@@ -196,16 +211,56 @@ function filterPortfolio(category) {
     renderPortfolio(category);
 }
 
-// 4. Interactive Project Configurator Logic
+// 4. Lógica del Modal de Preview (Sitio en Vivo)
+function openPreviewModal(url, displayUrl) {
+    const modal = document.getElementById('preview-modal');
+    const modalContent = document.getElementById('preview-modal-content');
+    const iframe = document.getElementById('preview-iframe');
+    const urlText = document.getElementById('preview-url-text');
+    const loader = document.getElementById('preview-loader');
+
+    if (!modal || !iframe) return;
+
+    urlText.textContent = `https://${displayUrl}`;
+    loader.classList.remove('hidden');
+    iframe.src = url;
+
+    modal.classList.remove('hidden');
+    
+    setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modalContent.classList.remove('scale-95');
+    }, 10);
+}
+
+function closePreviewModal() {
+    const modal = document.getElementById('preview-modal');
+    const modalContent = document.getElementById('preview-modal-content');
+    const iframe = document.getElementById('preview-iframe');
+
+    if (!modal) return;
+
+    modal.classList.add('opacity-0');
+    modalContent.classList.add('scale-95');
+
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        iframe.src = ''; 
+    }, 300);
+}
+
+// 5. Lógica del Cotizador de Proyectos
 let selectedModules = [
     { name: 'Sistema ERP Integral', weeks: 4 }
 ];
-let selectedScaleLabel = '1 a 10 usuarios';
+let selectedScaleLabel = '1 a 10 (Pyme)';
 
 function toggleModule(btnEl, name, weeks) {
     const exists = selectedModules.find(m => m.name === name);
+    
     if (exists) {
         if (selectedModules.length === 1) return;
+        
         selectedModules = selectedModules.filter(m => m.name !== name);
         btnEl.classList.remove('selected', 'border-zp-blue', 'bg-zp-blue/15');
         btnEl.classList.add('border-white/10', 'bg-[#070A12]');
@@ -218,6 +273,7 @@ function toggleModule(btnEl, name, weeks) {
         btnEl.querySelector('.module-icon').setAttribute('data-lucide', 'check-square');
         btnEl.querySelector('.module-icon').classList.replace('text-slate-500', 'text-zp-cyan');
     }
+    
     lucide.createIcons();
     updateBlueprint();
 }
@@ -239,6 +295,7 @@ function setScale(id, label) {
 function updateBlueprint() {
     const listEl = document.getElementById('blueprint-modules-list');
     if (!listEl) return;
+    
     listEl.innerHTML = selectedModules.map(m => `
         <span class="px-2.5 py-1 rounded-md bg-zp-blue/20 border border-zp-blue/40 text-xs font-mono text-white">
             ${m.name}
@@ -248,6 +305,7 @@ function updateBlueprint() {
     const totalWeeks = selectedModules.reduce((acc, item) => acc + item.weeks, 1);
     const timeEl = document.getElementById('blueprint-time');
     const scaleEl = document.getElementById('blueprint-scale');
+    
     if (timeEl) timeEl.textContent = `${totalWeeks} a ${totalWeeks + 2} Semanas`;
     if (scaleEl) scaleEl.textContent = selectedScaleLabel;
 }
@@ -255,17 +313,19 @@ function updateBlueprint() {
 function transferQuoteToContact() {
     const modulesText = selectedModules.map(m => m.name).join(', ');
     const msgField = document.getElementById('form-message');
+    
     if (msgField) {
-        msgField.value = `Hola equipo Zero Ping, me interesa cotizar un sistema a medida con los siguientes módulos: ${modulesText}. Escala estimada: ${selectedScaleLabel}.`;
+        msgField.value = `Hola equipo Zero Ping, me interesa cotizar un sistema a medida con los siguientes módulos:\n- ${modulesText}\n\nEscala estimada: ${selectedScaleLabel}.\n\nDetalles adicionales: `;
     }
+    
     const contactoSec = document.getElementById('contacto');
     if (contactoSec) {
         contactoSec.scrollIntoView({ behavior: 'smooth' });
     }
+    
     if (msgField) msgField.focus();
 }
 
-// 5. Contact Form Handler
 function handleContactSubmit(e) {
     e.preventDefault();
     const nameInput = document.getElementById('form-name');
@@ -282,7 +342,6 @@ function handleContactSubmit(e) {
     e.target.reset();
 }
 
-// Initialize on Load
 window.addEventListener('DOMContentLoaded', () => {
     initInteractiveCodeSymbol();
     renderPortfolio('all');
