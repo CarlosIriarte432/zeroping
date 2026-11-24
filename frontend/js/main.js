@@ -341,10 +341,9 @@ function goToSlide(index) {
     currentSlide = index;
     updateProjectCard(currentSlide, true);
 }
-// 4. Lógica del Modal de Preview (Sitio en Vivo)
+// 4. Lógica del Modal de Preview (OPTIMIZADA SIN LAG)
 function openPreviewModal(url, displayUrl) {
     const modal = document.getElementById('preview-modal');
-    const modalContent = document.getElementById('preview-modal-content');
     const iframe = document.getElementById('preview-iframe');
     const urlText = document.getElementById('preview-url-text');
     const loader = document.getElementById('preview-loader');
@@ -352,31 +351,39 @@ function openPreviewModal(url, displayUrl) {
     if (!modal || !iframe) return;
 
     urlText.textContent = `https://${displayUrl}`;
-    loader.classList.remove('hidden');
-    iframe.src = url;
+    if (loader) loader.classList.remove('hidden');
 
+    // 1. Bloquear scroll del sitio principal para evitar repintados de fondo
+    document.body.classList.add('overflow-hidden');
+
+    // 2. Mostrar el modal primero (solo opacidad, sin scale)
     modal.classList.remove('hidden');
-    
+    void modal.offsetWidth; // Fuerza el reflow antes de animar
+    modal.classList.remove('opacity-0');
+
+    // 3. Cargar el iframe DESPUÉS de que el modal ya abrió (evita el tirón)
+    iframe.onload = () => {
+        if (loader) loader.classList.add('hidden');
+    };
+
     setTimeout(() => {
-        modal.classList.remove('opacity-0');
-        modalContent.classList.remove('scale-95');
-    }, 10);
+        iframe.src = url;
+    }, 150);
 }
 
 function closePreviewModal() {
     const modal = document.getElementById('preview-modal');
-    const modalContent = document.getElementById('preview-modal-content');
     const iframe = document.getElementById('preview-iframe');
 
     if (!modal) return;
 
     modal.classList.add('opacity-0');
-    modalContent.classList.add('scale-95');
+    document.body.classList.remove('overflow-hidden');
 
     setTimeout(() => {
         modal.classList.add('hidden');
-        iframe.src = ''; 
-    }, 300);
+        iframe.src = 'about:blank'; // Libera la memoria RAM/GPU del sitio embebido al instante
+    }, 200);
 }
 
 // 5. Lógica del Cotizador de Proyectos
