@@ -296,85 +296,88 @@
     <!-- NEON SEPARATOR -->
     <div class="section-divider-neon"></div>
 
-    <!-- SECCIÓN PROYECTOS: TARJETA FIJA CON MUTACIÓN GLITCH -->
-<section id="casos-exito" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+<!-- SECCIÓN PROYECTOS: RESPONSIVE MOBILE + MUTACIÓN GLITCH -->
+<section id="casos-exito" class="relative z-10 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-10">
         <div>
             <span class="text-xs font-mono text-zp-cyan uppercase tracking-widest">// Portafolio en Producción</span>
-            <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-3">
+            <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2 sm:mt-3">
                 Nuestros <span class="metallic-text">Proyectos</span>
             </h2>
         </div>
 
-        <!-- Controles -->
-        <div class="flex items-center gap-3">
-            <span id="slider-counter" class="text-xs font-mono text-slate-400 mr-2">01 / 05</span>
-            <button onclick="prevSlide()" class="w-11 h-11 rounded-xl bg-white/5 hover:bg-zp-blue border border-white/10 hover:border-zp-blue text-white flex items-center justify-center transition" aria-label="Proyecto anterior">
-                <i data-lucide="chevron-left" class="w-5 h-5"></i>
-            </button>
-            <button onclick="nextSlide()" class="w-11 h-11 rounded-xl bg-white/5 hover:bg-zp-blue border border-white/10 hover:border-zp-blue text-white flex items-center justify-center transition" aria-label="Siguiente proyecto">
-                <i data-lucide="chevron-right" class="w-5 h-5"></i>
-            </button>
+        <!-- Controles (alineados a los extremos en mobile para fácil acceso con el pulgar) -->
+        <div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto pt-1 sm:pt-0">
+            <span id="slider-counter" class="text-xs font-mono text-slate-400">01 / 05</span>
+            <div class="flex items-center gap-2.5">
+                <button onclick="prevSlide()" class="w-11 h-11 rounded-xl bg-white/5 active:bg-zp-blue hover:bg-zp-blue border border-white/10 hover:border-zp-blue text-white flex items-center justify-center transition" aria-label="Proyecto anterior">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button onclick="nextSlide()" class="w-11 h-11 rounded-xl bg-white/5 active:bg-zp-blue hover:bg-zp-blue border border-white/10 hover:border-zp-blue text-white flex items-center justify-center transition" aria-label="Siguiente proyecto">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+            </div>
         </div>
     </div>
 
-   <!-- Tarjeta Fija (Dimensiones estrictas: 0 saltos al mutar) -->
-    <div id="project-stage" class="glass-panel rounded-3xl overflow-hidden border border-white/10 transition-colors duration-300">
+    <!-- Tarjeta Fija (Flexible en mobile para no cortar contenido, estricta en desktop) -->
+    <div id="project-stage" class="glass-panel rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 transition-colors duration-300 touch-pan-y">
         <div class="grid grid-cols-1 lg:grid-cols-12 lg:h-[500px]">
             
-            <!-- Columna Izquierda: Identidad + Logo (Altura fija) -->
-            <div id="proj-accent-bg" class="lg:col-span-5 h-[360px] lg:h-full relative bg-gradient-to-br from-zp-blue/25 via-blue-600/10 to-transparent p-8 sm:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 transition-colors duration-700">
-                <div class="flex items-center justify-between shrink-0">
-                    <span id="proj-badge" class="px-3 py-1 rounded-full text-[11px] font-mono bg-[#05060B]/80 text-zp-cyan border border-white/10 whitespace-nowrap">
+            <!-- Columna Izquierda: Identidad + Logo -->
+            <div id="proj-accent-bg" class="lg:col-span-5 min-h-[250px] sm:min-h-[320px] lg:h-full relative bg-gradient-to-br from-zp-blue/25 via-blue-600/10 to-transparent p-5 sm:p-8 lg:p-10 flex flex-col justify-between gap-4 border-b lg:border-b-0 lg:border-r border-white/10 transition-colors duration-700">
+                <div class="flex items-center justify-between gap-2 shrink-0">
+                    <span id="proj-badge" class="px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono bg-[#05060B]/80 text-zp-cyan border border-white/10 truncate max-w-[75%]">
                         ECOSISTEMA LOGÍSTICO
                     </span>
-                    <div id="proj-icon-box" class="w-11 h-11 rounded-2xl bg-[#05060B]/80 border border-white/15 flex items-center justify-center text-zp-cyan shrink-0">
-                        <i data-lucide="truck" class="w-5 h-5"></i>
+                    <div id="proj-icon-box" class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-[#05060B]/80 border border-white/15 flex items-center justify-center text-zp-cyan shrink-0">
+                        <i data-lucide="truck" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                     </div>
                 </div>
 
-                <!-- Contenedor del Logo con ALTURA FIJA (nunca empuja el layout) -->
-                <div id="proj-logo-wrap" class="w-full h-36 sm:h-44 flex items-center justify-center transition-opacity duration-500 overflow-hidden">
+                <!-- Logo del Cliente -->
+                <div id="proj-logo-wrap" class="w-full h-24 sm:h-36 lg:h-44 flex items-center justify-center transition-opacity duration-500 overflow-hidden my-1 sm:my-2">
                     <img id="proj-logo" src="./frontend/src/saelogo.png" alt="Logo Cliente" class="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]" onerror="this.style.opacity='0'">
                 </div>
 
-                <!-- Nombre del Cliente con altura reservada para hasta 2 líneas -->
+                <!-- Nombre del Cliente -->
                 <div class="shrink-0">
-                    <div class="text-xs font-mono uppercase tracking-widest text-slate-400">CLIENTE</div>
-                    <div id="proj-client" class="font-display text-2xl sm:text-3xl font-bold text-white mt-1 h-[4.5rem] flex items-center leading-tight overflow-hidden">
+                    <div class="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-slate-400">CLIENTE</div>
+                    <div id="proj-client" class="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white mt-0.5 min-h-[2rem] lg:h-[4.5rem] flex items-center leading-tight">
                         Transportes SAE
                     </div>
                 </div>
             </div>
 
-            <!-- Columna Derecha: Contenido (Altura fija y distribución interna estable) -->
-            <div class="lg:col-span-7 h-[460px] sm:h-[440px] lg:h-full p-8 sm:p-10 flex flex-col justify-between overflow-hidden">
-                <div class="space-y-3">
-                    <!-- Título con altura fija para 2 líneas (el glitch nunca empuja hacia abajo) -->
-                    <h3 id="proj-title" class="font-display text-2xl sm:text-3xl font-bold text-white h-[4.5rem] leading-tight overflow-hidden">
+            <!-- Columna Derecha: Contenido -->
+            <div class="lg:col-span-7 h-auto lg:h-full p-5 sm:p-8 lg:p-10 flex flex-col justify-between gap-5 lg:gap-0 lg:overflow-hidden">
+                <div class="space-y-2.5 sm:space-y-3">
+                    <h3 id="proj-title" class="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white min-h-[3.2rem] lg:h-[4.5rem] leading-tight">
                         Sitio Corporativo & Suite Operativa
                     </h3>
-                    <!-- Descripción con altura fija para 3-4 líneas -->
-                    <p id="proj-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed h-[5.5rem] overflow-hidden transition-opacity duration-300">
+                    <p id="proj-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed min-h-[4.5rem] lg:h-[5.5rem] transition-opacity duration-300">
                         Presencia digital corporativa integrada con herramientas privadas de control documental y rastreo en tiempo real para su flota.
                     </p>
                 </div>
 
-                <!-- Contenedor de Ecosistema Interno (SAE) o espacio equilibrado -->
-                <div id="proj-ecosystem" class="my-6 transition-opacity duration-300"></div>
+                <!-- Ecosistema Interno (SAE) -->
+                <div id="proj-ecosystem" class="transition-opacity duration-300"></div>
 
                 <!-- Pie de la tarjeta: Tags y Botón Demo -->
-                <div class="pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div id="proj-tags" class="flex flex-wrap gap-2 transition-opacity duration-300"></div>
-                    <div id="proj-action" class="transition-opacity duration-300"></div>
+                <div class="pt-4 sm:pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div id="proj-tags" class="flex flex-wrap gap-1.5 sm:gap-2 transition-opacity duration-300"></div>
+                    <div id="proj-action" class="w-full sm:w-auto transition-opacity duration-300"></div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- Puntos de navegación -->
-    <div id="portfolio-dots" class="flex items-center justify-center gap-2.5 mt-8"></div>
+    <!-- Puntos de navegación + pista de swipe en mobile -->
+    <div id="portfolio-dots" class="flex items-center justify-center gap-2.5 mt-6 sm:mt-8"></div>
+    <p class="text-center text-[11px] font-mono text-slate-500 mt-3 sm:hidden">
+        ← Desliza la tarjeta para cambiar de proyecto →
+    </p>
 </section>
 
     <!-- NEON SEPARATOR -->
@@ -551,7 +554,7 @@
         <div class="absolute inset-0 bg-[#030712]/90 cursor-pointer" onclick="closePreviewModal()"></div>
         
         <!-- Contenedor del Navegador (agregado relative z-10) -->
-        <div id="preview-modal-content" class="relative z-10 w-full max-w-6xl h-[88vh] bg-[#0B1220] border border-zp-blue/40 rounded-2xl overflow-hidden flex flex-col shadow-2xl">
+        <div id="preview-modal-content" class="relative z-10 w-full max-w-6xl h-[92vh] sm:h-[88vh] bg-[#0B1220] border border-zp-blue/40 rounded-2xl overflow-hidden flex flex-col shadow-2xl">
             
             <!-- Barra superior estilo macOS -->
             <div class="h-12 bg-[#0B1220] border-b border-white/10 flex items-center justify-between px-4 shrink-0">
@@ -564,7 +567,7 @@
                 <div class="flex-1 flex justify-center">
                     <div class="bg-white/5 border border-white/10 rounded-md px-4 py-1 text-xs font-mono text-slate-400 flex items-center gap-2">
                         <i data-lucide="lock" class="w-3 h-3 text-emerald-400"></i>
-                        <span id="preview-url-text">https://healthy-snacks.pages.dev</span>
+                        <span id="preview-url-text" class="truncate max-w-[180px] sm:max-w-none">https://healthy-snacks.pages.dev</span>
                     </div>
                 </div>
 

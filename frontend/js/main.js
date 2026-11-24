@@ -69,7 +69,7 @@ function initInteractiveCodeSymbol() {
     });
 }
 
-// 3. Datos y Lógica del Portafolio (MUTACIÓN GLITCH LENTA + LOGOS)
+// 3. Datos y Lógica del Portafolio (MUTACIÓN GLITCH LENTA + LOGOS + SWIPE MOBILE)
 const portfolioCases = [
     {
         id: 'sae',
@@ -182,6 +182,7 @@ function renderPortfolioSlider() {
         `).join('');
     }
     updateProjectCard(0, false);
+    initStageSwipe();
 }
 
 function updateProjectCard(index, animate = true) {
@@ -214,14 +215,14 @@ function updateProjectCard(index, animate = true) {
             : 'slider-dot h-2 w-2 rounded-full bg-white/20 hover:bg-white/40 transition-all duration-500';
     });
 
-    // Color de fondo lateral
+    // Color de fondo lateral (con clases mobile preservadas)
     if (accentBg) {
-        accentBg.className = `lg:col-span-5 relative bg-gradient-to-br ${item.accent} p-8 sm:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 transition-all duration-700`;
+        accentBg.className = `lg:col-span-5 min-h-[250px] sm:min-h-[300px] lg:h-full relative bg-gradient-to-br ${item.accent} p-6 sm:p-8 lg:p-10 flex flex-col justify-between gap-4 border-b lg:border-b-0 lg:border-r border-white/10 transition-colors duration-700`;
     }
 
     // Glitch en ícono
     if (iconBox) {
-        iconBox.innerHTML = `<i data-lucide="${item.icon}" class="w-5 h-5"></i>`;
+        iconBox.innerHTML = `<i data-lucide="${item.icon}" class="w-4 h-4 sm:w-5 sm:h-5"></i>`;
         if (animate) {
             iconBox.classList.remove('glitch-active');
             void iconBox.offsetWidth;
@@ -234,7 +235,7 @@ function updateProjectCard(index, animate = true) {
         logoWrap.style.opacity = '0';
         setTimeout(() => {
             logoImg.style.display = 'block';
-            logoImg.style.opacity = '1'; // <-- Restaura la opacidad si el proyecto anterior no tenía logo
+            logoImg.style.opacity = '1'; // Restaura opacidad si el proyecto anterior no tenía logo
             logoImg.src = item.logo;
             logoImg.alt = `Logo ${item.client}`;
             logoWrap.style.opacity = '1';
@@ -297,7 +298,7 @@ function updateProjectCard(index, animate = true) {
         }, fadeDelay);
     }
 
-    // Tags y Botón
+    // Tags y Botón (Full-width en mobile)
     if (tagsEl && actionEl) {
         tagsEl.style.opacity = '0';
         actionEl.style.opacity = '0';
@@ -307,12 +308,12 @@ function updateProjectCard(index, animate = true) {
             `).join('');
 
             actionEl.innerHTML = item.previewUrl ? `
-                <button onclick="openPreviewModal('${item.previewUrl}', '${item.displayUrl}')" class="px-5 py-2.5 rounded-xl bg-zp-blue hover:bg-blue-600 text-white text-sm font-semibold transition flex items-center justify-center gap-2 whitespace-nowrap shadow-lg shadow-zp-blue/25">
+                <button onclick="openPreviewModal('${item.previewUrl}', '${item.displayUrl}')" class="w-full sm:w-auto px-5 py-3 sm:py-2.5 rounded-xl bg-zp-blue hover:bg-blue-600 active:scale-[0.98] text-white text-sm font-semibold transition flex items-center justify-center gap-2 whitespace-nowrap shadow-lg shadow-zp-blue/25">
                     <i data-lucide="external-link" class="w-4 h-4"></i>
                     <span>Ver Demo en Vivo</span>
                 </button>
             ` : `
-                <span class="text-xs font-mono text-slate-500 flex items-center gap-1.5">
+                <span class="text-xs font-mono text-slate-500 flex items-center justify-center sm:justify-start gap-1.5 py-2 sm:py-0">
                     <i data-lucide="shield-check" class="w-4 h-4"></i>
                     Proyecto Privado
                 </span>
@@ -341,6 +342,31 @@ function goToSlide(index) {
     currentSlide = index;
     updateProjectCard(currentSlide, true);
 }
+
+// Soporte para deslizar con el dedo (Swipe) en celulares
+function initStageSwipe() {
+    const stage = document.getElementById('project-stage');
+    if (!stage) return;
+    let startX = 0;
+    let startY = 0;
+
+    stage.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    stage.addEventListener('touchend', (e) => {
+        const diffX = startX - e.changedTouches[0].clientX;
+        const diffY = startY - e.changedTouches[0].clientY;
+
+        // Solo cambia de proyecto si el gesto es claramente horizontal
+        if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
+            if (diffX > 0) nextSlide();
+            else prevSlide();
+        }
+    }, { passive: true });
+}
+
 // 4. Lógica del Modal de Preview (OPTIMIZADA SIN LAG)
 function openPreviewModal(url, displayUrl) {
     const modal = document.getElementById('preview-modal');
