@@ -116,3 +116,15 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
     background: #1D70F7;
 }
+
+/* Efecto Glitch breve al cambiar de proyecto */
+@keyframes zp-glitch-flash {
+    0% { opacity: 1; transform: translateX(0); }
+    25% { opacity: 0.4; transform: translateX(-3px) skewX(-4deg); }
+    50% { opacity: 0.8; transform: translateX(3px) skewX(4deg); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+.glitch-active {
+    animation: zp-glitch-flash 0.25s ease-out;
+}

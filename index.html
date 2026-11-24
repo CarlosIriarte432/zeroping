@@ -39,7 +39,7 @@
     </script>
 
     <!-- External Stylesheet -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="./frontend/css/styles.css">
 </head>
 <body class="font-sans antialiased selection:bg-zp-blue selection:text-white bg-tech-grid relative text-slate-100 bg-[#030712]">
 
@@ -50,7 +50,7 @@
     <header class="sticky top-0 z-40 glass-panel border-b border-zp-blue/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="#" class="flex items-center group focus:outline-none -my-6" aria-label="Zero Ping Home">
-                <img src="src/logo.png" alt="Zero Ping Logo" class="h-36 w-auto transition-transform duration-300 group-hover:scale-105 object-contain">
+                <img src="./frontend/src/logo.png" alt="Zero Ping Logo" class="h-36 w-auto transition-transform duration-300 group-hover:scale-105 object-contain">
             </a>
 
             <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-300">
@@ -149,144 +149,228 @@
     <!-- NEON SEPARATOR -->
     <div class="section-divider-neon"></div>
 
-    <!-- SECCIÓN 2: NUESTROS SERVICIOS -->
-    <section id="soluciones" class="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-            <div>
-                <div class="text-xs font-mono uppercase tracking-widest text-zp-cyan mb-2">// NUESTROS SERVICIOS</div>
-                <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">
-                    Digitalizamos cada área de tu operación a medida
-                </h2>
+   <!-- SECCIÓN SERVICIOS -->
+<section id="soluciones" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="max-w-2xl mb-14">
+        <span class="text-xs font-mono text-zp-cyan uppercase tracking-widest">// Arquitectura Digital</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-3">
+            Soluciones diseñadas para <span class="metallic-text">escalar</span>
+        </h2>
+    </div>
+
+    <!-- Fila Superior: 2 Tarjetas Principales -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <!-- Tarjeta 1: Sitios Web & E-Commerce -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-8 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                        <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">ALTA CONVERSIÓN</span>
+                </div>
+                <h3 class="font-display text-2xl font-bold text-white">Sitios Web Corporativos & E-Commerce</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Plataformas comerciales ultrarrápidas con pasarelas de pago integradas (Webpay Plus, Mercado Pago), carritos inteligentes y gestión de despachos para B2B o B2C.
+                </p>
             </div>
-            <p class="text-slate-400 max-w-md text-sm sm:text-base">
-                No adaptamos tu empresa a un software enlatado. Desarrollamos la herramienta exacta que tu equipo necesita para escalar y controlar cada peso.
-            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Pasarelas de Pago</span>
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Panel Administrable</span>
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> SEO Técnico</span>
+            </div>
         </div>
 
-        <!-- Bento Grid de 5 Tarjetas (Fila 1: 50/50 | Fila 2: 33/33/33) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-            
-            <!-- TARJETA 1: Sitios Web Corporativos & E-Commerce (6 columnas = 50%) -->
-            <div class="md:col-span-2 lg:col-span-6 glass-panel glass-panel-hover rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
-                <div class="absolute -right-12 -top-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition"></div>
-                <div>
-                    <div class="flex items-center justify-between mb-6 relative z-10">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">ALTA CONVERSIÓN</span>
+        <!-- Tarjeta 2: Sistemas ERP -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-8 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="w-12 h-12 rounded-xl bg-zp-blue/15 border border-zp-blue/30 flex items-center justify-center text-zp-cyan">
+                        <i data-lucide="database" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="font-display text-2xl font-bold text-white mb-3 relative z-10">Sitios Web Corporativos & E-Commerce</h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 relative z-10">Plataformas comerciales ultrarrápidas con pasarelas de pago integradas (Webpay Plus, Mercado Pago), carritos inteligentes y gestión de despachos para B2B o B2C.</p>
+                    <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-zp-blue/10 text-zp-cyan border border-zp-blue/20">CORE EMPRESARIAL</span>
                 </div>
-                <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/10 relative z-10">
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300 flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Pasarelas de Pago</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300 flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Panel Administrable</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300 flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> SEO Técnico</span>
-                </div>
+                <h3 class="font-display text-2xl font-bold text-white">Sistemas ERP & Gestión Integral a Medida</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Centraliza toda tu operación en una plataforma segura. Control de inventario multi-bodega, compras, proveedores, facturación y control de permisos en un solo lugar.
+                </p>
             </div>
-
-            <!-- TARJETA 2: Sistemas ERP a Medida (6 columnas = 50%) -->
-            <div class="md:col-span-2 lg:col-span-6 glass-panel glass-panel-hover rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden group">
-                <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-zp-blue/15 rounded-full blur-3xl group-hover:bg-zp-blue/25 transition"></div>
-                <div>
-                    <div class="flex items-center justify-between mb-6 relative z-10">
-                        <div class="w-12 h-12 rounded-xl bg-zp-blue/20 border border-zp-blue/40 flex items-center justify-center text-zp-cyan">
-                            <i data-lucide="database" class="w-6 h-6"></i>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-zp-blue/15 text-zp-cyan border border-zp-blue/30">CORE EMPRESARIAL</span>
-                    </div>
-                    <h3 class="font-display text-2xl font-bold text-white mb-3 relative z-10">Sistemas ERP & Gestión Integral a Medida</h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 relative z-10">Centraliza toda tu operación en una plataforma segura. Control de inventario multi-bodega, compras, proveedores, facturación y control de permisos en un solo lugar.</p>
-                </div>
-                <div class="flex flex-wrap gap-2.5 pt-4 border-t border-white/10 relative z-10">
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300 flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-zp-cyan"></i> Multi-Bodega</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300 flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-zp-cyan"></i> Roles y Permisos</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs font-mono text-slate-300 flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-zp-cyan"></i> Auditoría</span>
-                </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Multi-Bodega</span>
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Roles y Permisos</span>
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Auditoría</span>
             </div>
-
-            <!-- TARJETA 3: Control Administrativo (4 columnas = 33%) -->
-            <div class="md:col-span-1 lg:col-span-4 glass-panel glass-panel-hover rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-zp-cyan/15 border border-zp-cyan/30 flex items-center justify-center text-zp-cyan">
-                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono bg-white/5 text-slate-300 border border-white/10">FINANZAS & GESTIÓN</span>
-                    </div>
-                    <h3 class="font-display text-xl lg:text-2xl font-bold text-white mb-3">Control Administrativo & Automatización</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">Elimina las planillas sueltas. Automatizamos la generación de cotizaciones en PDF, flujos de caja y rendiciones de gastos diarios.</p>
-                </div>
-                <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Reportes PDF/Excel</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">KPIs en Vivo</span>
-                </div>
-            </div>
-
-            <!-- TARJETA 4: Software Minero y Logística (4 columnas = 33%) -->
-            <div class="md:col-span-1 lg:col-span-4 glass-panel glass-panel-hover rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400">
-                            <i data-lucide="truck" class="w-6 h-6"></i>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono bg-purple-500/15 text-purple-300 border border-purple-500/30">ESPECIALIDAD REGIONAL</span>
-                    </div>
-                    <h3 class="font-display text-xl lg:text-2xl font-bold text-white mb-3">Software para Proveedores y Logística</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">Desarrollamos sistemas de control de flota, checklists digitales para faena, mantenciones preventivas y portales de clientes.</p>
-                </div>
-                <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Control de Flota</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Modo Terreno</span>
-                </div>
-            </div>
-
-            <!-- TARJETA 5: IA y Chatbots (4 columnas = 33%) -->
-            <div class="md:col-span-2 lg:col-span-4 glass-panel glass-panel-hover rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
-                <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div>
-                    <div class="flex items-center justify-between mb-6 relative z-10">
-                        <div class="w-12 h-12 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400">
-                            <i data-lucide="bot" class="w-6 h-6"></i>
-                        </div>
-                        <span class="px-3 py-1 rounded-full text-[10px] sm:text-xs font-mono bg-rose-500/15 text-rose-300 border border-rose-500/30">IA & AUTOMATIZACIÓN</span>
-                    </div>
-                    <h3 class="font-display text-xl lg:text-2xl font-bold text-white mb-3 relative z-10">Agentes de Inteligencia Artificial & Chatbots 24/7</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6 relative z-10">Integramos asistentes virtuales con IA que responden dudas, agendan reuniones y guían ventas por WhatsApp o en tu sitio web de forma automática.</p>
-                </div>
-                <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10 relative z-10">
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Bots de WhatsApp</span>
-                    <span class="px-2.5 py-1 rounded-md bg-white/5 text-[11px] font-mono text-slate-300">Atención 24/7</span>
-                </div>
-            </div>
-
         </div>
-    </section>
+    </div>
+
+    <!-- Fila Inferior: 4 Tarjetas en grilla 2x2 (todas con tickets ✓) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Tarjeta 3: Control Administrativo -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-7 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="w-11 h-11 rounded-xl bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-teal-400">
+                        <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-white/5 text-slate-300 border border-white/10">FINANZAS & GESTIÓN</span>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white">Control Administrativo & Automatización</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Elimina las planillas sueltas. Automatizamos la generación de cotizaciones en PDF, flujos de caja y rendiciones de gastos diarios.
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Reportes PDF/Excel</span>
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Flujos de Caja</span>
+            </div>
+        </div>
+
+        <!-- Tarjeta 4: Proveedores y Logística -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-7 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="w-11 h-11 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                        <i data-lucide="truck" class="w-5 h-5"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">ESPECIALIDAD REGIONAL</span>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white">Software para Proveedores y Logística</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Desarrollamos sistemas de control de flota, checklists digitales para faena, mantenciones preventivas y portales de clientes.
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Control de Flota</span>
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Modo Terreno</span>
+            </div>
+        </div>
+
+        <!-- Tarjeta 5: Agentes de IA -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-7 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="w-11 h-11 rounded-xl bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-rose-500/10 text-rose-300 border border-rose-500/20">IA & AUTOMATIZACIÓN</span>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white">Agentes de Inteligencia Artificial & Chatbots 24/7</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Integramos asistentes virtuales con IA que responden dudas, agendan reuniones y guían ventas por WhatsApp o en tu sitio web de forma automática.
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Bots de WhatsApp</span>
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Atención 24/7</span>
+            </div>
+        </div>
+
+        <!-- Tarjeta 6 (NUEVA): Dashboards & Business Intelligence -->
+        <div class="glass-panel glass-panel-hover rounded-2xl p-7 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="w-11 h-11 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                        <i data-lucide="pie-chart" class="w-5 h-5"></i>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-amber-500/10 text-amber-300 border border-amber-500/20">INTELIGENCIA DE DATOS</span>
+                </div>
+                <h3 class="font-display text-xl font-bold text-white">Dashboards & Business Intelligence</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Paneles gerenciales en tiempo real para medir KPIs críticos, rendimiento por sucursal, alertas de límites operativos y proyecciones de negocio.
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> KPIs en Vivo</span>
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Multi-Sucursal</span>
+                <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300 flex items-center gap-1.5"><span class="text-zp-cyan">✓</span> Alertas & Límites</span>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- NEON SEPARATOR -->
     <div class="section-divider-neon"></div>
 
-    <!-- SECCIÓN 3: PORTAFOLIO -->
-    <section id="casos-exito" class="relative z-10 py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
-            <div>
-                <div class="text-xs font-mono uppercase tracking-widest text-zp-cyan mb-2">// NUESTROS PROYECTOS</div>
-                <h2 class="font-display text-3xl sm:text-4x2 font-bold text-white">
-                    Negocios que ya operan con Zero Ping
-                </h2>
-            </div>
-
-            <div class="flex flex-wrap gap-2">
-                <button onclick="filterPortfolio('all')" id="filter-all" class="px-4 py-2 rounded-xl text-xs font-mono bg-zp-blue text-white font-semibold transition">Todos (5)</button>
-                <button onclick="filterPortfolio('ecommerce')" id="filter-ecommerce" class="px-4 py-2 rounded-xl text-xs font-mono bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition">E-Commerce & Web</button>
-                <button onclick="filterPortfolio('erp')" id="filter-erp" class="px-4 py-2 rounded-xl text-xs font-mono bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition">ERP & Logística</button>
-                <button onclick="filterPortfolio('gestion')" id="filter-gestion" class="px-4 py-2 rounded-xl text-xs font-mono bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition">Control Administrativo</button>
-            </div>
+    <!-- SECCIÓN PROYECTOS: TARJETA FIJA CON MUTACIÓN GLITCH -->
+<section id="casos-exito" class="relative z-10 py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+        <div>
+            <span class="text-xs font-mono text-zp-cyan uppercase tracking-widest">// Portafolio en Producción</span>
+            <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-3">
+                Nuestros <span class="metallic-text">Proyectos</span>
+            </h2>
         </div>
 
-        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </section>
+        <!-- Controles -->
+        <div class="flex items-center gap-3">
+            <span id="slider-counter" class="text-xs font-mono text-slate-400 mr-2">01 / 05</span>
+            <button onclick="prevSlide()" class="w-11 h-11 rounded-xl bg-white/5 hover:bg-zp-blue border border-white/10 hover:border-zp-blue text-white flex items-center justify-center transition" aria-label="Proyecto anterior">
+                <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <button onclick="nextSlide()" class="w-11 h-11 rounded-xl bg-white/5 hover:bg-zp-blue border border-white/10 hover:border-zp-blue text-white flex items-center justify-center transition" aria-label="Siguiente proyecto">
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </div>
+
+   <!-- Tarjeta Fija (Dimensiones estrictas: 0 saltos al mutar) -->
+    <div id="project-stage" class="glass-panel rounded-3xl overflow-hidden border border-white/10 transition-colors duration-300">
+        <div class="grid grid-cols-1 lg:grid-cols-12 lg:h-[500px]">
+            
+            <!-- Columna Izquierda: Identidad + Logo (Altura fija) -->
+            <div id="proj-accent-bg" class="lg:col-span-5 h-[360px] lg:h-full relative bg-gradient-to-br from-zp-blue/25 via-blue-600/10 to-transparent p-8 sm:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10 transition-colors duration-700">
+                <div class="flex items-center justify-between shrink-0">
+                    <span id="proj-badge" class="px-3 py-1 rounded-full text-[11px] font-mono bg-[#05060B]/80 text-zp-cyan border border-white/10 whitespace-nowrap">
+                        ECOSISTEMA LOGÍSTICO
+                    </span>
+                    <div id="proj-icon-box" class="w-11 h-11 rounded-2xl bg-[#05060B]/80 border border-white/15 flex items-center justify-center text-zp-cyan shrink-0">
+                        <i data-lucide="truck" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- Contenedor del Logo con ALTURA FIJA (nunca empuja el layout) -->
+                <div id="proj-logo-wrap" class="w-full h-36 sm:h-44 flex items-center justify-center transition-opacity duration-500 overflow-hidden">
+                    <img id="proj-logo" src="./frontend/src/saelogo.png" alt="Logo Cliente" class="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]" onerror="this.style.opacity='0'">
+                </div>
+
+                <!-- Nombre del Cliente con altura reservada para hasta 2 líneas -->
+                <div class="shrink-0">
+                    <div class="text-xs font-mono uppercase tracking-widest text-slate-400">CLIENTE</div>
+                    <div id="proj-client" class="font-display text-2xl sm:text-3xl font-bold text-white mt-1 h-[4.5rem] flex items-center leading-tight overflow-hidden">
+                        Transportes SAE
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: Contenido (Altura fija y distribución interna estable) -->
+            <div class="lg:col-span-7 h-[460px] sm:h-[440px] lg:h-full p-8 sm:p-10 flex flex-col justify-between overflow-hidden">
+                <div class="space-y-3">
+                    <!-- Título con altura fija para 2 líneas (el glitch nunca empuja hacia abajo) -->
+                    <h3 id="proj-title" class="font-display text-2xl sm:text-3xl font-bold text-white h-[4.5rem] leading-tight overflow-hidden">
+                        Sitio Corporativo & Suite Operativa
+                    </h3>
+                    <!-- Descripción con altura fija para 3-4 líneas -->
+                    <p id="proj-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed h-[5.5rem] overflow-hidden transition-opacity duration-300">
+                        Presencia digital corporativa integrada con herramientas privadas de control documental y rastreo en tiempo real para su flota.
+                    </p>
+                </div>
+
+                <!-- Contenedor de Ecosistema Interno (SAE) o espacio equilibrado -->
+                <div id="proj-ecosystem" class="my-6 transition-opacity duration-300"></div>
+
+                <!-- Pie de la tarjeta: Tags y Botón Demo -->
+                <div class="pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div id="proj-tags" class="flex flex-wrap gap-2 transition-opacity duration-300"></div>
+                    <div id="proj-action" class="transition-opacity duration-300"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Puntos de navegación -->
+    <div id="portfolio-dots" class="flex items-center justify-center gap-2.5 mt-8"></div>
+</section>
 
     <!-- NEON SEPARATOR -->
     <div class="section-divider-neon"></div>
@@ -503,7 +587,7 @@
             <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
                 <div class="md:col-span-5 space-y-4">
                     <a href="#" class="inline-block group focus:outline-none" aria-label="Zero Ping Home">
-                        <img src="src/logofooter.png" alt="Zero Ping Logo" class="h-28 w-auto transition-transform duration-300 group-hover:scale-105 object-contain">
+                        <img src="./frontend/src/logofooter.png" alt="Zero Ping Logo" class="h-28 w-auto transition-transform duration-300 group-hover:scale-105 object-contain">
                     </a>
                     <p class="text-sm text-slate-400 max-w-sm leading-relaxed">
                         Ingeniería de software a medida, ERPs, sistemas de gestión y plataformas web de alta velocidad. Desarrollado desde Calama, Chile.
@@ -549,6 +633,6 @@
     </footer>
 
     <!-- Main JavaScript File -->
-    <script src="js/main.js"></script>
+    <script src="./frontend/js/main.js"></script>
 </body>
 </html>
